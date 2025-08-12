@@ -20,11 +20,11 @@
 
 ### 2.1 프로젝트 주제 선정 배경
 
-<img width="700" height="300" alt="Image" src="./image/decline.png" />
+<img width="1000" height="500" alt="Image" src="./image/decline.png" />
 
 <br>
 
-<img width="700" height="300" alt="Image" src="./image/topics_affected.png" />
+<img width="1000" height="500" alt="Image" src="./image/topics_affected.png" />
 
 <br>
 
@@ -196,7 +196,7 @@ df['is_churned'] = df['SOVisitFreq'].apply(lambda x: 1 if x in ['Less than once 
 ```
 
 #### 히트맵
-<img width="500" height="400" alt="Image" src=".\\image\\heatmap.png" />
+<img width="1000" height="800" alt="Image" src=".\\image\\heatmap.png" />
 
 ## 6. 인공지능 학습 결과서
 
@@ -230,7 +230,7 @@ weighted avg       0.78      0.77      0.77     27782
 
 <br>
 
-<img width="700" height="300" alt="Image" src="./image/LogisticRegression.png" />
+<img width="1000" height="500" alt="Image" src="./image/LogisticRegression.png" />
 
 <br>
 
@@ -261,7 +261,7 @@ weighted avg       0.88      0.88      0.88     27782
 ```
 <br>
 
-<img width="700" height="300" alt="Image" src="./image/decision_tree.png" />
+<img width="1000" height="500" alt="Image" src="./image/decision_tree.png" />
 
 <br>
 
@@ -293,7 +293,7 @@ weighted avg       0.91      0.91      0.91     27782
 ```
 <br>
 
-<img width="700" height="300" alt="Image" src="./image/RandomForest.png" />
+<img width="1000" height="500" alt="Image" src="./image/RandomForest.png" />
 
 <br>
 
@@ -325,7 +325,7 @@ weighted avg       0.90      0.90      0.90     27782
 ```
 <br>
 
-<img width="700" height="300" alt="Image" src="./image/GradientBoost.png" />
+<img width="1000" height="500" alt="Image" src="./image/GradientBoost.png" />
 
 <br>
 
@@ -357,7 +357,7 @@ weighted avg       0.93      0.93      0.93     27782
 ```
 <br>
 
-<img width="700" height="300" alt="Image" src="./image/XGBclassifier.png" />
+<img width="1000" height="500" alt="Image" src="./image/XGBclassifier.png" />
 
 <br>
 
@@ -411,10 +411,6 @@ weighted avg       0.93      0.93      0.93     27782
 
 <br>
 
-<img width="500" height="500" alt="Image" src="./image/allalong.png" />
-
-<br>
-
 🌈 **팀원 한 줄 회고**
 <table>
   <tr>
@@ -442,3 +438,9 @@ weighted avg       0.93      0.93      0.93     27782
     <td></td>
   </tr>
 </table>
+
+<br>
+
+<img width="1000" height="1000" alt="Image" src="./image/allalong.png" />
+
+<br>
