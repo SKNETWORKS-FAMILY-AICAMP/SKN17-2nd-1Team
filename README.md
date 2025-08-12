@@ -196,7 +196,7 @@ df['is_churned'] = df['SOVisitFreq'].apply(lambda x: 1 if x in ['Less than once 
 ```
 
 #### 히트맵
-<img width="500" height="150" alt="Image" src=".\\image\\heatmap.png" />
+<img width="500" height="400" alt="Image" src=".\\image\\heatmap.png" />
 
 ## 6. 인공지능 학습 결과서
 
@@ -408,6 +408,10 @@ weighted avg       0.93      0.93      0.93     27782
 <!-- 필요시 작성
 #### - 최종 변수 결과
  -->
+
+<br>
+
+<img width="500" height="500" alt="Image" src="./image/allalong.png" />
 
 <br>
 
