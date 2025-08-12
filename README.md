@@ -9,13 +9,10 @@
 
 ## 🌟 **팀원 소개**  
 
-| 이름      | GitHub ID                           |
-|-----------|------------------------------------|
-| 정의중  | [@uii42](https://github.com/uii42) |
-| 임길진  | [@LGJ0405](https://github.com/LGJ0405)         |
-| 이민영  | [@mylee99125](https://github.com/mylee99125) |
-| 신승철  | [@ssshinnpson](https://github.com/ssshinnpson) |
-| 김주서  | [@kimjuseo71](https://github.com/kimjuseo71) |
+| 정의중 | 임길진 | 이민영| 신승철 | 김주서 |
+|---|---|---|---|---|
+| <img src="./image/Doraemon.png" width="150" height="170"/> | <img src="./image/Sneech.png" width="150" height="170"/> | <img src="./image/Sue.png" width="150" height="170"/> | <img src="./image/Noby.png" width="150" height="170"/> | <img src="./image/Giant.png" width="150" height="170"/> | 
+|[@uii42](https://github.com/uii42)| [@LGJ0405](https://github.com/LGJ0405) | [@mylee99125](https://github.com/mylee99125) | [@ssshinnpson](https://github.com/ssshinnpson) | [@kimjuseo71](https://github.com/kimjuseo71)|
 
 <br>
 
@@ -51,8 +48,11 @@
 
 
 **데이터 출처**
+## 📊 데이터 출처
 
-[https://survey.stackoverflow.co/](https://survey.stackoverflow.co/)
+[Stack Overflow Annual Developer Survey](https://survey.stackoverflow.co/) 의 설문 데이터를 사용했습니다.
+
+
 
 <br>
 
@@ -68,30 +68,32 @@
 
 ## 4. WBS
 
-그림 넣을 장소 ~~~~~
-
+<!-- WBS 넣을 장소 -->
+<!-- <img width="700" height="300" alt="Image" src="./image/" /> -->
 <br>
 
 ## 5. 데이터 전처리 및 EDA (탐색적 데이터 분석)
 
 #### **분석 타겟 컬럼**
 
-| 변수 | 설명 | 타입 |
-| --- | --- | --- |
-| LearningCode_count | 언어 학습 방법 개수 | int64 |
-| Lang_Diversity  | 사용 언어 다양성 | int64 |
-| AI_Tool_Count | AI 도구 사용 수 | int64 |
-| WorkExp | 실무 경력 | float64 |
-| YearsCode | 코딩 경험 연차 | float64 |
-| DevRole_Count | 직무 역할 수 | int64 |
-| SOHow_count | 커뮤니티 방문 사유 수 | int64 |
-| SOComm_encoded | 커뮤니티 인식 수준 | int64 |
-| NEWSOSites_count | 다른 사이트 방문 수 | int64 |
-| Age_encoded | 나이 | float64 |
-| Challenges_count | AI 도구 사용 장애 요인 수 | int64 |
-| AIForecastScore | 1년 내 AI  | int64 |
-| AIThreat_num | AI 위협 인식 | float64 |
-| is_churned | 이탈 여부 | int64 |
+| 변수명 | 설명 | 데이터 타입 |
+|--------|------|--------------|
+| `LearningCode_count` | 코딩 학습 방법 개수 | `int64` |
+| `Lang_Diversity` | 사용 프로그래밍 언어 다양성 | `int64` |
+| `AI_Tool_Count` | 사용 중인 AI 도구 수 | `int64` |
+| `WorkExp` | 실무 경력 | `float64` |
+| `YearsCode` | 코딩 경험 연차 | `float64` |
+| `DevRole_Count` | 담당 개발 역할 수 | `int64` |
+| `SOHow_count` | Stack Overflow 방문 이유 개수 | `int64` |
+| `SOComm_encoded` | Stack Overflow 커뮤니티 인식 수준 | `int64` |
+| `NEWSOSites_count` | Stack Overflow 외 사이트 방문 수 | `int64` |
+| `Age_encoded` | 나이 | `float64` |
+| `Challenges_count` | AI 도구 사용 시 겪는 문제 수 | `int64` |
+| `AIForecastScore` | AI 전망 점수 | `int64` |
+| `AIThreat_num` | AI 위협 인식 수준 (수치화) | `float64` |
+| `is_churned` | 이탈 여부 (타겟 변수) | `int64` |
+
+
 
 <br>
 
@@ -359,7 +361,8 @@ weighted avg       0.93      0.93      0.93     27782
 
 <br>
 
-### 필요한 막대그래프
+<!-- 필요시 작성
+### 필요한 막대그래프 -->
 
 <br>
 
@@ -402,8 +405,9 @@ weighted avg       0.93      0.93      0.93     27782
 
 개요에서 시작된 문제점에 대한 해결 방안 등등
 
+<!-- 필요시 작성
 #### - 최종 변수 결과
-필요한가?
+ -->
 
 <br>
 
