@@ -20,19 +20,19 @@
 
 ### 2.1 프로젝트 주제 선정 배경
 
-<img width="1000" height="500" alt="Image" src="./image/decline.png" />
-
-<br>
-
-<img width="1000" height="500" alt="Image" src="./image/topics_affected.png" />
-
-<br>
-
 2023년을 기점으로 ChatGPT와 같은 생성형 AI 도구가 보편화되면서 개발자들의 정보 검색 및 문제 해결 방식에 패러다임 전환이 일어나고 있습니다. 이로 인해 세계 최대 개발자 Q&A 커뮤니티인 Stack Overflow는 질문 및 답변 수가 급감하는 심각한 도전에 직면했습니다.
 
 이는 단순한 트래픽 감소를 넘어, 커뮤니티의 지식 생태계를 지탱해 온 **핵심 개발자(High-contribution developers)들의 이탈**을 가속화할 수 있습니다. 전문가들의 이탈은 곧 답변의 질적 저하로 이어지고, 이는 다시 일반 사용자들의 이탈을 유발하여 플랫폼의 장기적인 신뢰도와 가치를 훼손하는 악순환을 낳을 수 있습니다.
 
 따라서, 어떤 개발자가 커뮤니티를 떠날 위험이 높은지 선제적으로 파악하고, 그 원인을 데이터 기반으로 분석하는 것은 커뮤니티의 지속 가능성을 위해 매우 중요합니다. 본 프로젝트는 바로 이 문제를 해결하고자 합니다.
+
+<br>
+
+<img width="1000" height="500" alt="Image" src="./image/decline.png" />
+
+<br>
+
+<img width="1000" height="500" alt="Image" src="./image/topics_affected.png" />
 
 <br>
 
@@ -52,8 +52,6 @@
 
 [Stack Overflow Annual Developer Survey](https://survey.stackoverflow.co/) 의 설문 데이터를 사용했습니다.
 
-
-
 <br>
 
 ## 3. **기술 스택**
@@ -68,8 +66,8 @@
 
 ## 4. WBS
 
-<!-- WBS 넣을 장소 -->
-<!-- <img width="700" height="300" alt="Image" src="./image/" /> -->
+<img width="1000" height="400" alt="Image" src="./image/WBS.png" />
+
 <br>
 
 ## 5. 데이터 전처리 및 EDA (탐색적 데이터 분석)
@@ -93,11 +91,10 @@
 | `AIThreat_num` | AI 위협 인식 수준 (수치화) | `float64` |
 | `is_churned` | 이탈 여부 (타겟 변수) | `int64` |
 
-
-
 <br>
 
-- 결측치 처리
+#### 결측치 처리
+
 ``` python
 df = df.dropna(subset=['SOVisitFreq'])
 df['WorkExp'] = df['WorkExp'].fillna(0)
@@ -119,7 +116,9 @@ df = df.dropna(subset=['Age_encoded'])
 df['SOComm_encoded'] = df['SOComm_encoded'].fillna(0)
 ```
 
-- countMultipleResponses 함수 사진
+<br>
+
+#### countMultipleResponses 함수
 
 ``` python
 def countMultipleResponses(value):
@@ -128,7 +127,10 @@ def countMultipleResponses(value):
     return len(re.findall(r"[;,]", str(value))) + 1
 ```
 
-- 이거로 처리한 count애들 사진
+<br>
+
+#### 개수로 처리한 column
+
 ``` python
 df['LearnCode_count'] = df['LearnCode'].apply(countMultipleResponses)
 df['Lang_Diversity'] = df['LanguageHaveWorkedWith'].apply(countMultipleResponses)
@@ -140,7 +142,10 @@ df['Challenges_count']= df['AIChallenges'].apply(countMultipleResponses)
 
 ```
 
-- 이외 encoding들 
+<br>
+
+#### encoding 처리한 column
+
 ``` python
 so_comm_order = {
     'No, not at all': 0,
@@ -171,10 +176,12 @@ age_order = {
 }
 
 df['Age_encoded'] = df['Age'].map(age_order)
-
 ```
 
-- AIForecastScore 도출 
+<br>
+
+#### AIForecastScore 도출
+
 ``` python
 df['AINextMuch_more_count'] = df['AINextMuch more integrated'].apply(countMultipleResponses)
 df['AINextMore_count'] = df['AINextMore integrated'].apply(countMultipleResponses)
@@ -187,22 +194,32 @@ df['AIForecastScore'] = (
     - df['AINextLess_count']
     - df['AINextMuch_less_count'] * 2
 )
-
 ```
 
-- is_churned -> 이탈 기준 뭐로 잡았는지
+<br>
+
+#### label column
+
 ``` python
 df['is_churned'] = df['SOVisitFreq'].apply(lambda x: 1 if x in ['Less than once per month or monthly', 'I don’t visit Stack Overflow'] else 0)
 ```
 
+<br>
+
+<img width="1000" height="500" alt="Image" src="./image/target_imbalanced.png" />
+
+<br>
+
 #### 히트맵
 <img width="1000" height="800" alt="Image" src=".\\image\\heatmap.png" />
+
+<br>
 
 ## 6. 인공지능 학습 결과서
 
 ### 모델별 학습 결과
 
-- Logistic Regression: 로지스틱 회귀 <br>
+- ### Logistic Regression: 로지스틱 회귀 <br>
 
 ```
 🔍 최적 임계값 (Optimal threshold): 0.41
@@ -234,7 +251,7 @@ weighted avg       0.78      0.77      0.77     27782
 
 <br>
 
-- Decision Tree : 결정 트리 회귀 <br>
+- ### Decision Tree : 결정 트리 회귀 <br>
 
 ```DecisionTreeClassifier:
 🔍 최적 임계값 (Optimal threshold): 0.36
@@ -265,7 +282,7 @@ weighted avg       0.88      0.88      0.88     27782
 
 <br>
 
-- Random Forest : 랜덤 포레스트 회귀 <br>
+- ### Random Forest : 랜덤 포레스트 회귀 <br>
 
 ```
 RandomForestClassifier
@@ -297,7 +314,7 @@ weighted avg       0.91      0.91      0.91     27782
 
 <br>
 
-- Gradient Boosting : 그래디언트 부스팅 회귀 <br>
+- ### Gradient Boosting : 그래디언트 부스팅 회귀 <br>
 
 ```
 GradientBoostingClassifier:
@@ -329,7 +346,7 @@ weighted avg       0.90      0.90      0.90     27782
 
 <br>
 
-- XGBoost : eXtreme Gradient Boosting 회귀 <br>
+- ### XGBoost : eXtreme Gradient Boosting 회귀 <br>
 
 ```
 XGBClassifier:
@@ -366,15 +383,31 @@ weighted avg       0.93      0.93      0.93     27782
 
 <br>
 
-## 7. 수행 결과
+## 7. 추천 시스템 도입
 
-- AI는 상관관계 크게 없음
+
+
+<img width="1000" height="500" alt="Image" src="./image/streamlit1.png" />
+
+<br>
+
+<img width="1000" height="500" alt="Image" src="./image/streamlit2.png" />
+
+<br>
+
+<img width="1000" height="500" alt="Image" src="./image/streamlit3.png" />
+
+<!-- - AI는 상관관계 크게 없음
 - SOHow_count, NEWSOSites, DevRole, SOComm
 - 데이터 불균형 심함. SMOTE 한거
 
 <br>
 
-## 📊 수행 결과
+## 📊 수행 결과 -->
+
+<br>
+
+## 결론
 
 본 프로젝트에서는 Stack Overflow 핵심 기여자의 이탈 여부를 예측하기 위해 다양한 머신러닝 모델을 비교·분석한 결과, **XGBoost 모델이 Accuracy 93.27%, F1 Score 0.93**으로 가장 우수한 성능을 보였다.  
 
