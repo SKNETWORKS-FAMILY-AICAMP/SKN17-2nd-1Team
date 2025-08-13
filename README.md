@@ -341,9 +341,39 @@ GradientBoostingClassifier:
    macro avg       0.90      0.90      0.90     27782
 weighted avg       0.90      0.90      0.90     27782
 ```
+
 <br>
 
-<img width="1000" height="500" alt="Image" src="./image/GradientBoost.png" />
+- ### CatboostCalssifier : 캣부스트 분류기 <br>
+
+```
+CatBoostClassifier:
+🔍 최적 임계값 (Optimal threshold): 0.46
+✅ 학습 정확도: 0.9269293530428105
+
+✅ 정확도 (Accuracy): 0.9245914620977611
+✅ 정밀도 (Precision): 0.9392314566577301
+✅ 재현율 (Recall): 0.9079259952487222
+✅ F1 Score: 0.9233134448552289
+
+📊 혼동 행렬 (Confusion Matrix):
+ [[13075   816]
+ [ 1279 12612]]
+
+📋 분류 리포트 (Classification Report):
+               precision    recall  f1-score   support
+
+           0       0.91      0.94      0.93     13891
+           1       0.94      0.91      0.92     13891
+
+    accuracy                           0.92     27782
+   macro avg       0.93      0.92      0.92     27782
+weighted avg       0.93      0.92      0.92     27782
+```
+
+<br>
+
+<img width="1000" height="500" alt="Image" src="./image/CatBoostClassifier.png" />
 
 <br>
 
