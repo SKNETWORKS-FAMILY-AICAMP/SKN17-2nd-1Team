@@ -32,7 +32,7 @@
 
 <br>
 
-<img width="1000" height="500" alt="Image" src="./image/topics_affected.png" />
+<img width="1000" height="800" alt="Image" src="./image/topics_affected.png" />
 
 출처: The Decline of Stack Overflow, Tomaž Weiss
 <br>
@@ -45,7 +45,7 @@
 2. **데이터 기반 솔루션 프로토타입 제안**
     - 분석된 인사이트를 바탕으로, 이탈 가능성이 높은 사용자에게 제공할 수 있는 **개인화된 활성화 솔루션 프로토타입을 Streamlit으로 구현**하여 실질적인 해결 방안의 가능성을 제시한다.
 
-## 📊 데이터 출처
+### 2.3 데이터 출처
 
 [Stack Overflow Annual Developer Survey](https://survey.stackoverflow.co/) 의 설문 데이터를 사용했습니다.
 
@@ -413,7 +413,7 @@ weighted avg       0.93      0.93      0.93     27782
 
 - ### 모델 성능 시각화
 
-<img width="1000" height="500" alt="Image" src="./image/model_score.png" />
+<img width="1000" height="700" alt="Image" src="./image/model_score.png" />
 
 Gradient Boost, RandomForest 모델도 좋은 성능을 보였지만, XGBoost가 Precision, Recall, F1-Score에서 가장 좋은 성능을 보인다. 
 
@@ -421,7 +421,7 @@ Gradient Boost, RandomForest 모델도 좋은 성능을 보였지만, XGBoost가
 
 - ### ROC curve
 
-<img width="1000" height="500" alt="Image" src="./image/roc_curve.png" />
+<img width="1000" height="700" alt="Image" src="./image/roc_curve.png" />
 
 XGBoost 곡선이 다른 모델들 곡선보다 미세하게나마 위쪽에 위치한 것을 확인할 수 있다. 이는 XGBoost 모델이 가장 안정적으로 좋은 성능을 내고 있다는 것을 다시 한 번 보여준다.
 
@@ -429,7 +429,7 @@ XGBoost 곡선이 다른 모델들 곡선보다 미세하게나마 위쪽에 위
 
 - ### XGB 모델 shap plot
 
-<img width="1000" height="500" alt="Image" src="./image/xgb_shap.png" />
+<img width="1000" height="700" alt="Image" src="./image/xgb_shap.png" />
 
 가장 성능이 좋다고 판단되는 XGBoost 모델이 특정 사용자가 **왜 이탈 가능성이 높다고 생각했는지** 각 feature별로 보여주는 자료다. y축은 해당 feature 값이 바뀔 때 모델 출력이 얼마나 변하는지 영향력을 기준으로 나열된다. X축은 0을 기준으로 양수쪽으로 갈 수록 음수로 갈수록 이탈 확률을 낮추는 요인이다. 각 점의 색은 해당 변수값의 높이값을 의미해 빨간색은 높은 값, 파란색은 낮은 값을 의미한다.
 
