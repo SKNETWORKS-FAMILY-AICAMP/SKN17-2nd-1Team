@@ -1,4 +1,4 @@
-# **AI 시대, Stack Overflow 핵심 개발자 이탈 예측 및 활성화 방안 연구**
+# **Stack Overflow 핵심 개발자 이탈 예측 및 활성화 방안 연구**
 
 ## 1. **팀 소개**
 
@@ -53,11 +53,15 @@
 
 ## 3. **기술 스택**
 
-| **분류**         | **기술/도구** |
-|------------------|------------------------------------------------------------------------------------------|
-| **언어**         | ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python)     |
-| **라이브러리**   | ![NumPy](https://img.shields.io/badge/numpy-013243?style=for-the-badge&logo=numpy)       ![Pandas](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas)  <br> ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=Matplotlib&logoColor=white) ![Seaborn](https://img.shields.io/badge/seaborn-0C5A5A?style=for-the-badge&logo=Seaborn) <br>![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white) ![XGBoost](https://img.shields.io/badge/XGBoost-FF7043?style=for-the-badge&logo=xgboost&logoColor=white) ![Imbalanced Learn](https://img.shields.io/badge/imblearn-00599C?style=for-the-badge&logo=scikit-learn&logoColor=white)<br> ![Joblib](https://img.shields.io/badge/joblib-4B8BBE?style=for-the-badge&logo=python&logoColor=white)|
-| **협업 툴**      |![GitHub](https://img.shields.io/badge/github-121011?style=for-the-badge&logo=github)   ![Git](https://img.shields.io/badge/git-F05033?style=for-the-badge&logo=git)|
+| **분류**       | **기술/도구** |
+|----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **언어**       | ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python) |
+| **데이터 처리** | ![NumPy](https://img.shields.io/badge/numpy-013243?style=for-the-badge&logo=numpy) ![Pandas](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas) |
+| **시각화**     | ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=Matplotlib&logoColor=white) ![Seaborn](https://img.shields.io/badge/seaborn-0C5A5A?style=for-the-badge&logo=Seaborn) |
+| **모델링**     | ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white) ![XGBoost](https://img.shields.io/badge/XGBoost-FF7043?style=for-the-badge&logo=xgboost&logoColor=white) ![CatBoost](https://img.shields.io/badge/CatBoost-EEB902?style=for-the-badge&logo=catboost&logoColor=black) |
+| **불균형 처리** | ![Imbalanced Learn](https://img.shields.io/badge/imblearn-00599C?style=for-the-badge&logo=scikit-learn&logoColor=white) |
+| **모델 저장**   | ![Joblib](https://img.shields.io/badge/joblib-4B8BBE?style=for-the-badge&logo=python&logoColor=white) |
+| **협업 툴**     | ![GitHub](https://img.shields.io/badge/github-121011?style=for-the-badge&logo=github) ![Git](https://img.shields.io/badge/git-F05033?style=for-the-badge&logo=git) |
 
 <br>
 
