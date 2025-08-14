@@ -204,7 +204,7 @@ df['AIForecastScore'] = (
 
 #### label column
 
-타겟 변수인 `is_churned`(이탈 여부)의 분포가 심각한 불균형을 이루고 있어, 소수 클래스(이탈 그룹)의 예측 성능을 높이기 위해 **SMOTE** 기법으로 데이터를 증강했습니다.
+타겟 변수인 `is_churned`(이탈 여부)의 분포가 심각한 불균형을 이루고 있어, 소수 클래스(이탈 그룹)의 예측 성능을 높이기 위해 **SMOTE** 기법으로 데이터를 증강하였다.
 
 ``` python
 df['is_churned'] = df['SOVisitFreq'].apply(lambda x: 1 if x in ['Less than once per month or monthly', 'I don’t visit Stack Overflow'] else 0)
