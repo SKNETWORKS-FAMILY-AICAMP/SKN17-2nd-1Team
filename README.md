@@ -32,7 +32,7 @@
 
 <br>
 
-<img width="1000" height="800" alt="Image" src="./image/topics_affected.png" />
+<img width="1000" height="500" alt="Image" src="./image/topics_affected.png" />
 
 출처: The Decline of Stack Overflow, Tomaž Weiss
 <br>
@@ -45,7 +45,7 @@
 2. **솔루션 프로토타입 제안**
     - 분석된 인사이트를 바탕으로, 이탈 고위험군 사용자에게 **개인화된 활성화 솔루션을 제공하는 Streamlit 프로토타입을 구현**한다.
 
-### 2.3 데이터 출처
+## 📊 데이터 출처
 
 - Stack Overflow Annual Developer Survey: https://survey.stackoverflow.co/ 설문 데이터
 
@@ -76,24 +76,24 @@
 모델링에 사용할 주요 변수를 선정하고, 결측치 처리 및 파생 변수 생성을 통해 데이터를 정제한다.
 또한 텍스트 형태의 다중 응답 데이터를 수치화하고, 순서형 변수는 인코딩하여 모델이 학습할 수 있는 형태로 변환한다.
 
-#### 분석 타겟 컬럼
+#### 원시 데이터
 
-| 변수명 | 설명 | 데이터 타입 |
-|--------|------|--------------|
-| `LearningCode_count` | 코딩 학습 방법 개수 | `int64` |
-| `Lang_Diversity` | 사용 프로그래밍 언어 다양성 | `int64` |
-| `AI_Tool_Count` | 사용 중인 AI 도구 수 | `int64` |
-| `WorkExp` | 실무 경력 | `float64` |
-| `YearsCode` | 코딩 경험 연차 | `float64` |
-| `DevRole_Count` | 담당 개발 역할 수 | `int64` |
-| `SOHow_count` | Stack Overflow 방문 이유 개수 | `int64` |
-| `SOComm_encoded` | Stack Overflow 커뮤니티 인식 수준 | `int64` |
-| `NEWSOSites_count` | Stack Overflow 외 사이트 방문 수 | `int64` |
-| `Age_encoded` | 나이 | `float64` |
-| `Challenges_count` | AI 도구 사용 시 겪는 문제 수 | `int64` |
-| `AIForecastScore` | AI 전망 점수 | `int64` |
-| `AIThreat_num` | AI 위협 인식 수준 (수치화) | `float64` |
-| `is_churned` | 이탈 여부 (타겟 변수) | `int64` |
+<div align='center'>
+
+<img width="700" height="200" alt="Image" src="./image/raw_data.png" />
+
+</div>
+
+<br>
+
+#### 분석 타겟 컬럼 선정
+적절한 ML 모델 학습과 상관관계 확인을 위해 전처리가 필요하다. 우선 개인 배경 영역, 기술 스택 영역, 커뮤니티 인식 영역, AI 인식 영역에 따라 컬럼을 선정했다.
+
+<div align='center'>
+
+<img width="500" height="400" alt="Image" src="./image/cols_select.png" />
+
+</div>
 
 <br>
 
@@ -124,6 +124,16 @@ df['SOComm_encoded'] = df['SOComm_encoded'].fillna(0)
 
 #### countMultipleResponses 함수
 
+<div align='center'>
+
+<img width="600" height="300" alt="Image" src="./image/multiple_responses.png" />
+
+</div>
+
+이처럼 선택한 컬럼들 중 다중 선택이 가능한 특성들이 존재했다. 해당 특성들을 학습하기 위한 변수로 만들기 위해 해당 설문에서 응답한 항목 개수를 세서 새 파생 변수를 만들기 위해 새 함수를 정의했다.
+
+<br>
+
 ``` python
 def countMultipleResponses(value):
     if pd.isna(value) or str(value).strip() == "":
@@ -143,12 +153,14 @@ df['DevRole_Count'] = df['DevType'].apply(countMultipleResponses)
 df['SOHow_count'] = df['SOHow'].apply(countMultipleResponses)
 df['NEWSOSites_count'] = df['NEWSOSites'].apply(countMultipleResponses)
 df['Challenges_count']= df['AIChallenges'].apply(countMultipleResponses)
-
 ```
 
 <br>
 
 #### encoding 처리한 column
+개수로 처리한 column 외에 커뮤니티나 AI 인식 같은 경우 인코딩을 통해 처리했다.
+
+<br>
 
 ``` python
 so_comm_order = {
@@ -185,6 +197,7 @@ df['Age_encoded'] = df['Age'].map(age_order)
 <br>
 
 #### AIForecastScore 도출
+추가로 AI 인식에 관한 컬럼을 찾던 중 AI 전망에 대한 특성들을 발견했고, 진행된 설문에 대해 전망이 좋지 않다고 생각하거나 좋다고 생각한 설문에 점수를 매겨 AIForecastScore 라는 파생변수를 만들었다.
 
 ``` python
 df['AINextMuch_more_count'] = df['AINextMuch more integrated'].apply(countMultipleResponses)
@@ -217,6 +230,29 @@ df['is_churned'] = df['SOVisitFreq'].apply(lambda x: 1 if x in ['Less than once 
 <img width="500" height="500" alt="Image" src="./image/target_imbalanced.png" />
 
 </div>
+
+<br>
+
+#### 최종 데이터프레임
+
+- 59265 rows, 14 columns
+
+| 변수명 | 설명 | 데이터 타입 |
+|--------|------|--------------|
+| `LearningCode_count` | 코딩 학습 방법 개수 | `int64` |
+| `Lang_Diversity` | 사용 프로그래밍 언어 다양성 | `int64` |
+| `AI_Tool_Count` | 사용 중인 AI 도구 수 | `int64` |
+| `WorkExp` | 실무 경력 | `float64` |
+| `YearsCode` | 코딩 경험 연차 | `float64` |
+| `DevRole_Count` | 담당 개발 역할 수 | `int64` |
+| `SOHow_count` | Stack Overflow 방문 이유 개수 | `int64` |
+| `SOComm_encoded` | Stack Overflow 커뮤니티 인식 수준 | `int64` |
+| `NEWSOSites_count` | Stack Overflow 외 사이트 방문 수 | `int64` |
+| `Age_encoded` | 나이 | `float64` |
+| `Challenges_count` | AI 도구 사용 시 겪는 문제 수 | `int64` |
+| `AIForecastScore` | AI 전망 점수 | `int64` |
+| `AIThreat_num` | AI 위협 인식 수준 (수치화) | `float64` |
+| `is_churned` | 이탈 여부 (타겟 변수) | `int64` |
 
 <br>
 
@@ -422,7 +458,7 @@ weighted avg       0.93      0.93      0.93     27782
 
 - ### 모델 성능 시각화
 
-<img width="1000" height="700" alt="Image" src="./image/model_score.png" />
+<img width="1000" height="500" alt="Image" src="./image/model_score.png" />
 
 총 6개의 모델을 학습 및 평가한 결과, **XGBoost가 F1-Score 0.93**으로 가장 우수한 성능을 보여 최종 모델로 선정하였다.
 
@@ -430,7 +466,7 @@ weighted avg       0.93      0.93      0.93     27782
 
 - ### ROC curve
 
-<img width="1000" height="700" alt="Image" src="./image/roc_curve.png" />
+<img width="1000" height="500" alt="Image" src="./image/roc_curve.png" />
 
 XGBoost 곡선이 다른 모델들 곡선보다 미세하게나마 위쪽에 위치한 것을 확인할 수 있다. 이는 XGBoost 모델이 가장 안정적으로 좋은 성능을 내고 있다는 것을 다시 한 번 보여준다.
 
@@ -438,7 +474,7 @@ XGBoost 곡선이 다른 모델들 곡선보다 미세하게나마 위쪽에 위
 
 - ### XGB 모델 shap plot
 
-<img width="1000" height="700" alt="Image" src="./image/xgb_shap.png" />
+<img width="1000" height="500" alt="Image" src="./image/xgb_shap.png" />
 
 가장 성능이 좋다고 판단되는 XGBoost 모델이 특정 사용자가 **왜 이탈 가능성이 높다고 생각했는지** 각 feature별로 보여주는 자료다. y축은 해당 feature 값이 바뀔 때 모델 출력이 얼마나 변하는지 영향력을 기준으로 나열된다. X축은 0을 기준으로 양수쪽으로 갈 수록 이탈 확률을 높이는 요인이고, 음수로 갈수록 이탈 확률을 낮추는 요인이다. 각 점의 색은 해당 변수값의 높이값을 의미해 빨간색은 높은 값, 파란색은 낮은 값을 의미한다.
 
